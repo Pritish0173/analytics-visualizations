@@ -6,6 +6,13 @@
   font-size: 300%;
 }
 
+.graphheading {
+  color: rgb(125, 4, 150);
+  /* text-shadow: 2px 2px 8px #0099ff; */
+  text-shadow: 2px 2px 8px rgb(66, 66, 252);
+  font-size: 200%;
+}
+
 .wordcloud{
   background-color: white;
   width: 90%;
@@ -17,9 +24,13 @@
 }
 
 .charts {
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.graphdescription {
+  font-size: 120%;
 }
 
 .btn {

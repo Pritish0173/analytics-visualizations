@@ -1,36 +1,34 @@
 import React, {useState,useEffect} from 'react';
 import BarChart from '../BarChart/HorizontalBarMultiple';
-// import axios from "axios";
+import axios from "axios";
 
 function Chart() {
 
-    // const [chartdata, setChartData] = useState(null);
+    const [chartdata, setChartData] = useState(null);
 
-    // useEffect(() => {
-    //     axios.get(baseURL).then((response) => {
-    //         setChartData(response.data);
-    //       });
-    // }, [])
+    useEffect(() => {
 
-    // if(chartdata === null) {
-    //     return (
-    //         <div>
-    //             Loading...
-    //         </div>
-    //     );
-    // }
+        axios.post("https://kcer3p8oa2.execute-api.ap-south-1.amazonaws.com/getdnbanalytics", {
+            key: "Year wise job postings"
+        })
+        .then((response) => {
+            // console.log(response.data.data);
+            setChartData(response.data.data);
+        });
 
-    const chartdata = [
-        ["Year", "Sales", "Expenses", "Profit"],
-        ["2014", 1000, 400, 200],
-        ["2015", 1170, 460, 250],
-        ["2016", 660, 1120, 300],
-        ["2017", 1030, 540, 350],
-    ];
+    }, [])
+
+    if(chartdata === null) {
+        return (
+            <div>
+                Loading...
+            </div>
+        );
+    }
 
     return (
         <div>
-            <BarChart data={chartdata}/>
+            <BarChart data={chartdata} xAxisLabel="No. of Job Postings" yAxisLabel="Year"/>
         </div>
     );
 }

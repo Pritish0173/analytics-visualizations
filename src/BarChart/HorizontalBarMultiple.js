@@ -25,20 +25,20 @@ import { Chart } from "react-google-charts";
 //   }
 // };
 
-export default function Barchart({data}) {
+export default function Barchart({data,xAxisLabel, yAxisLabel}) {
 
   const options = {
-    chart: {
-      title: "Company Performance",
-      subtitle: "Sales, Expenses, and Profit: 2014-2017",
-    },
+    // chart: {
+    //   title: "Company Performance",
+    //   subtitle: "Sales, Expenses, and Profit: 2014-2017",
+    // },
     bars: "horizontal",
     axes: {
       x: {
-        0: { side: 'bottom', label: 'Numbers'}
+        0: { side: 'bottom', label: xAxisLabel }
       },
       y: {
-        0: { side: 'left', label: 'Something'}
+        0: { side: 'left', label: yAxisLabel}
       }
     }
   };

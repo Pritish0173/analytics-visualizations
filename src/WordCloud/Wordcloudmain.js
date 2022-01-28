@@ -7,7 +7,7 @@ import "tippy.js/animations/scale.css";
 import WordcloudStart from './WordcloudStart';
 
 
-function Wordcloud({words}) {
+function Wordcloud({words,defaultcase}) {
 
   const [value, setValue] = useState(null);
 
@@ -28,7 +28,7 @@ function Wordcloud({words}) {
   const callbacks = {
       // getWordColor: (word) => (word.value > 10 ? "#C2571A" : "#107896"),
       getWordTooltip: (word) =>
-          `The domain "${word.text}" is accelerating by ${word.value}.`,
+          `Frequency of "${word.text}" is ${word.value}.`,
       onWordClick: getCallback("onWordClick"),
       onWordMouseOut: getCallback("onWordMouseOut"),
       onWordMouseOver: getCallback("onWordMouseOver")
@@ -47,7 +47,7 @@ function Wordcloud({words}) {
   }
 
   if(value !== null) {
-    return(<WordcloudStart selected={value} />);
+    return(<WordcloudStart selected={value} defaultcase={defaultcase} />);
   }
   else{
     return(

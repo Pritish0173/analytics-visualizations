@@ -1,5 +1,7 @@
-import React, {useState,useEffect} from 'react';
-import BarChart from '../BarChart/HorizontalBarMultiple';
+import React, {useState, useEffect} from 'react';
+import Wordcloud from './WordcloudStart';
+// import axios from "axios";
+import Loader from '../Loader/Loader';
 
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -51,40 +53,42 @@ const useTabStyles = makeStyles({
     };
   }
 
-function Chart() {
+function WordcloudStart() {
 
     const classes = useTabStyles();
 
     const [value, setValue] = useState(0);
 
-    const [chartdata, setChartData] = useState(null);
+    // const [words, setWords] = useState(null);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        axios.post("https://kcer3p8oa2.execute-api.ap-south-1.amazonaws.com/getdnbanalytics", {
-            key: "Overall Skills frequency"
-        })
-        .then((response) => {
-            // console.log(response.data.data);
-            setChartData(response.data.data);
-        });
+        // axios.post("https://kcer3p8oa2.execute-api.ap-south-1.amazonaws.com/getdnbanalytics", {
+        //     key: "Company Employment Industry"
+        // })
+        // .then((response) => {
+        //     console.log(response.data.data);
+        //     setWords(response.data.data);
+        //     // console.log(words["dnb"]);
+        //     // console.log(words["equifax"]);
+        //     // console.log(words["experian"]);
 
-    }, [])
+        // });
+
+    // }, [])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-      };
+    };
 
-    if(chartdata === null) {
-        return (
-            <div>
-                Loading...
-            </div>
-        );
-    }
+    // if(words === null) {
+    //     return(<Loader />);
+    // }
 
     return (
         <div>
+          {/* <Wordcloud selected="default" defaultcase="dnb" /> */}
+          {/* <Wordcloud words={words["dnb"]} selected="default" defaultcase="dnb" /> */}
             <Box sx={{bgcolor: 'transparent' }}>
                 <Tabs
                     classes={{ root: classes.root, scroller: classes.scroller }}
@@ -101,19 +105,16 @@ function Chart() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                {/* <h4 className="graphheader" style={{ marginTop: '1.5%', marginBottom: '1%', textAlign: 'center' }}>Skills Frequency</h4> */}
-                <BarChart data={chartdata["d&b"].slice(0,16)} xAxisLabel="Frequency" yAxisLabel="Top skills"/>
+                <Wordcloud selected="default" defaultcase="dnb" />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                {/* <h4 className="graphheader" style={{ marginTop: '1.5%', marginBottom: '1%', textAlign: 'center' }}>Top companies to work in {domain}</h4> */}
-                <BarChart data={chartdata["equifax"].slice(0,16)} xAxisLabel="Frequency" yAxisLabel="Top skills"/>
+                <Wordcloud selected="default" defaultcase="equifax" />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                {/* <h4 className="graphheader" style={{ marginTop: '1.5%', marginBottom: '1%', textAlign: 'center' }}>Top institutions in {domain}</h4> */}
-                <BarChart data={chartdata["experian"].slice(0,16)} xAxisLabel="Frequency" yAxisLabel="Top skills"/>
+                <Wordcloud selected="default" defaultcase="experian" />
             </TabPanel>
-        </div>
+        </div>        
     );
 }
 
-export default Chart;
+export default WordcloudStart;
