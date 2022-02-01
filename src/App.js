@@ -16,7 +16,7 @@ function App() {
   const options = {
     orientation: 'portrait',
     unit: 'in',
-    format: [width/95,height/19]
+    format: [width/95,38.5]
   };
 
   return (
