@@ -4,6 +4,7 @@
   /* text-shadow: 2px 2px 8px #0099ff; */
   text-shadow: 2px 2px 8px rgb(66, 66, 252);
   font-size: 300%;
+  height: max-content;
 }
 
 .graphheading {
@@ -11,26 +12,30 @@
   /* text-shadow: 2px 2px 8px #0099ff; */
   text-shadow: 2px 2px 8px rgb(66, 66, 252);
   font-size: 200%;
+  height: max-content;
 }
 
 .wordcloud{
   background-color: white;
   width: 90%;
-  height: 30em;
+  height: 47em;
   /* margin-left: 7em; */
   margin-right: auto;
   margin-left: auto;
-  margin-top: 1em
+  margin-top: 1em;
+  height: max-content;
 }
 
 .charts {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  height: max-content;
 }
 
 .graphdescription {
   font-size: 120%;
+  height: max-content;
 }
 
 .btn {
@@ -45,10 +50,24 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 20%;
+  height: max-content;
 }
 
 .buttoncontainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: max-content;
+}
+
+.headingcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: max-content;
+}
+
+#printable {
+  /* height:auto; */
+  height: max-content;
 }

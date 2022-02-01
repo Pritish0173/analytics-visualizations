@@ -52,7 +52,7 @@ function Wordcloud({words,defaultcase}) {
   else{
     return(
       <div>
-        <ReactWordcloud callbacks={callbacks} words={words} options={options}/>
+        <ReactWordcloud callbacks={callbacks} words={words.slice(0,50)} options={options} style={{height: '25em'}}/>
         <br></br>
         <div className="buttoncontainer">
           <button className="btn"onClick={handleReset}>Reset Wordcloud</button>
